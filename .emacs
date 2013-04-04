@@ -15,6 +15,7 @@
 
 (add-to-list 'load-path "~/.emacs.d") ;; check path
 
+;;install prereqs from here https://github.com/akaihola/flymake-python
 (when (load "flymake" t)
   (defun flymake-pylint-init ()
     (let* ((temp-file (flymake-init-create-temp-buffer-copy
