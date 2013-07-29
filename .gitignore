@@ -48,3 +48,8 @@ build/
 dist/
 bin/
 *.egg-info
+.elc
+session.*
+.saves*
+backup/
+ac-comphist.dat
