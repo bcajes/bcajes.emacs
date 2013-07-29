@@ -9,7 +9,7 @@ import logging
 
 from subprocess import Popen, PIPE
 
-MAX_DESCRIPTION_LENGTH = 60
+MAX_DESCRIPTION_LENGTH = 100
 
 class LintRunner(object):
     """ Base class provides common functionality to run
@@ -112,7 +112,7 @@ class PylintRunner(LintRunner):
     command = 'pylint'
 
     sane_default_ignore_codes = set([
-        "C0103",  # Naming convention
+        #"C0103",  # Naming convention
         "C0111",  # Missing Docstring
         "E1002",  # Use super on old-style class
         "W0232",  # No __init__
@@ -122,7 +122,7 @@ class PylintRunner(LintRunner):
         #"W0142",  # *args or **kwargs magic.
         "R0904",  # Too many public methods
         "R0903",  # Too few public methods
-        "R0201",  # Method could be a function
+        #"R0201",  # Method could be a function
         ])
 
     fixup_map = {'E': 'error', 'C': 'info', None: 'warning'}
@@ -218,9 +218,9 @@ class Pep8Runner(LintRunner):
       spiders/structs.py:51:9: E301 expected 1 blank line, found 0 """
 
     command = 'pep8'
-    # sane_default_ignore_codes = set([
-    #     'RW29', 'W391',
-    #     'W291', 'WO232'])
+    sane_default_ignore_codes = set([
+         'RW29', 'W391',
+         'W291', 'WO232'])
 
     custom_ignore_codes = 'IGNORE_CODES_PEP8'
 
@@ -364,6 +364,7 @@ def main():
         tests.run(args[0])
 
     def run(runner_class):
+        print "running"
         runner = runner_class(config)
         runner.run(args[0])
 
