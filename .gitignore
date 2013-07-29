@@ -48,7 +48,7 @@ build/
 dist/
 bin/
 *.egg-info
-.elc
+*.elc
 session.*
 .saves*
 backup/
