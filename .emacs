@@ -74,4 +74,5 @@
  ;; If there is more than one, they won't work right.
  )
 
-
+;;backup location
+(setq backup-directory-alist `(("." . "~/.saves_emacs/")))
