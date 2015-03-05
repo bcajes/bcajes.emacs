@@ -25,19 +25,19 @@
 (yas-global-mode 1)
 
 ;;js2-mode
-(add-to-list 'load-path
-              "~/.emacs.d/elpa/js2-mode-1.1")
-(require 'js2-mode)
-(js2-mode)
-(eval-after-load 'js2-mode
-  '(progn
-     (define-key js2-mode-map (kbd "TAB") (lambda()
-                                            (interactive)
-                                            (let ((yas/fallback-behavior 'return-nil))
-                                              (unless (yas/expand)
-                                                (indent-for-tab-command)
-                                                (if (looking-back "^\s*")
-                                                    (back-to-indentation))))))))
+;; (add-to-list 'load-path
+;;               "~/.emacs.d/elpa/js2-mode-1.1")
+;; (require 'js2-mode)
+;; (js2-mode)
+;; (eval-after-load 'js2-mode
+;;   '(progn
+;;      (define-key js2-mode-map (kbd "TAB") (lambda()
+;;                                             (interactive)
+;;                                             (let ((yas/fallback-behavior 'return-nil))
+;;                                               (unless (yas/expand)
+;;                                                 (indent-for-tab-command)
+;;                                                 (if (looking-back "^\s*")
+;;                                                     (back-to-indentation))))))))
 
 
 (add-to-list 'load-path "~/.emacs.d/")
@@ -75,4 +75,12 @@
  )
 
 ;;backup location
-(setq backup-directory-alist `(("." . "~/.saves_emacs/")))
+(setq
+   backup-by-copying t      ; don't clobber symlinks
+   backup-directory-alist
+    '(("." . "~/.saves"))    ; don't litter my fs tree
+   delete-old-versions t
+   kept-new-versions 6
+   kept-old-versions 2
+   version-control t)       ; use versioned backups
+(put 'upcase-region 'disabled nil)
